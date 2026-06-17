@@ -10,7 +10,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from stream_detect import (
     compute_skip,
-    log_violations,
     state,
     set_camera,
     _source_url,
@@ -32,23 +31,18 @@ class TestStreamDetect:
 
     def test_compute_skip(self):
         """Расчёт пропуска кадров из FPM"""
-        # При 60 FPS и 60 FPM -> fps_target = 1 кадр/сек -> skip = 60/1 = 60
         skip = compute_skip(60.0, 60)
         assert skip == 60
 
-        # При 30 FPS и 60 FPM -> fps_target = 1 -> skip = 30
         skip = compute_skip(30.0, 60)
         assert skip == 30
 
-        # При 25 FPS и 100 FPM -> fps_target = 100/60 = 1.67 -> skip = 25/1.67 = 15
         skip = compute_skip(25.0, 100)
         assert skip == 15
 
-        # При 30 FPS и 30 FPM -> fps_target = 0.5 -> skip = 30/0.5 = 60
         skip = compute_skip(30.0, 30)
         assert skip == 60
 
-        # При 0 FPS -> skip=1 (безопасное значение)
         skip = compute_skip(0, 60)
         assert skip == 1
 
@@ -71,33 +65,29 @@ class TestStreamDetect:
 
     def test_violation_cooldown(self):
         """Проверка cooldown для нарушений"""
-        # Очищаем cooldown перед тестом
         _violation_cooldown.clear()
 
         tid = 1
         current_time = time.time()
 
-        # Первое нарушение
         if tid not in _violation_cooldown:
             _violation_cooldown[tid] = current_time
             assert tid in _violation_cooldown
 
-        # Проверяем, что cooldown работает
         last_logged = _violation_cooldown.get(tid, 0)
         if current_time - last_logged < COOLDOWN_SECONDS:
-            assert True  # не логируем повторно
+            assert True
 
     def test_evict_every_constant(self):
         """Проверка константы очистки треков"""
         assert _evict_every == 150
 
     def test_camera_setting(self):
-        """Установка камеры (без фактической загрузки зон)"""
+        """Установка камеры"""
         try:
             set_camera("test_camera")
         except Exception:
-            pass  # Ожидаемо, если нет файлов зон
-
+            pass
         assert True
 
     def test_source_variables(self):

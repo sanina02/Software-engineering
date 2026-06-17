@@ -1,11 +1,6 @@
 # tests/test_calibrate_camera.py
 import sys
 from pathlib import Path
-import json
-import tempfile
-
-import numpy as np
-import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -14,7 +9,6 @@ from calibrate_camera import (
     CALIBRATIONS_DIR,
     SUPPORTED_EXTENSIONS,
     _progress_bar,
-    load_model,
 )
 
 
@@ -124,15 +118,12 @@ class TestAutoCalibrator:
         cal._refs[5] = 200.0
         cal._refs[7] = 220.0
 
-        # Прямое попадание
         ref = cal._get_ref(5)
         assert ref == 200.0
 
-        # Поиск в соседней зоне
         ref = cal._get_ref(6)
         assert ref == 200.0 or ref == 220.0
 
-        # Нет эталона - может найти эталон из ближайшей зоны
         ref = cal._get_ref(0)
         assert ref is None or isinstance(ref, float)
 

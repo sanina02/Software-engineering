@@ -1,15 +1,14 @@
+# tests/test_traffic_light.py
 import sys
 from pathlib import Path
 
 import numpy as np
-import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from traffic_light import (
     STATE_RED,
     STATE_GREEN,
-    STATE_YELLOW,
     STATE_UNKNOWN,
     LIGHT_TYPE_PEDESTRIAN,
     LIGHT_TYPE_VEHICLE,
@@ -56,11 +55,9 @@ class TestClassifyRoi:
 
     def test_roi_with_red(self):
         """ROI с красным цветом"""
-        # Создаём ROI с красным цветом
         roi = np.zeros((50, 50, 3), dtype=np.uint8)
-        roi[:, :, 2] = 255  # красный канал
+        roi[:, :, 2] = 255
         state, conf, debug = classify_roi(roi)
-        # Может быть RED или UNKNOWN в зависимости от реализации
         assert state in (STATE_RED, STATE_UNKNOWN)
 
 
@@ -93,16 +90,13 @@ class TestTrafficLightAnalyzer:
         """Разбор ROI"""
         analyzer = TrafficLightAnalyzer()
 
-        # Пустой список
         assert analyzer._parse_rois(None) == []
         assert analyzer._parse_rois([]) == []
 
-        # Одиночный ROI
         roi = [0.1, 0.2, 0.3, 0.4]
         result = analyzer._parse_rois(roi)
         assert result == [roi]
 
-        # Список ROI
         rois = [[0.1, 0.2, 0.3, 0.4], [0.5, 0.6, 0.7, 0.8]]
         result = analyzer._parse_rois(rois)
         assert result == rois

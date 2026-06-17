@@ -1,10 +1,7 @@
 # tests/test_zone_manager.py
 import sys
 from pathlib import Path
-import json
 import tempfile
-
-import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -63,7 +60,7 @@ class TestZoneManager:
 
     def test_init(self):
         """Создание менеджера"""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             f.write('{"cameras": {}}')
             temp_file = Path(f.name)
 
@@ -74,7 +71,7 @@ class TestZoneManager:
 
     def test_add_zone(self):
         """Добавление зоны"""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             f.write('{"cameras": {}}')
             temp_file = Path(f.name)
 
@@ -91,7 +88,7 @@ class TestZoneManager:
 
     def test_get_all(self):
         """Получение всех зон"""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             f.write('{"cameras": {}}')
             temp_file = Path(f.name)
 
@@ -105,7 +102,7 @@ class TestZoneManager:
 
     def test_delete_zone(self):
         """Удаление зоны"""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             f.write('{"cameras": {}}')
             temp_file = Path(f.name)
 
@@ -120,7 +117,7 @@ class TestZoneManager:
 
     def test_road_zones(self):
         """Фильтрация дорожных зон"""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             f.write('{"cameras": {}}')
             temp_file = Path(f.name)
 
@@ -136,7 +133,7 @@ class TestZoneManager:
 
     def test_crosswalk_zones(self):
         """Фильтрация пешеходных переходов"""
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".json", delete=False) as f:
             f.write('{"cameras": {}}')
             temp_file = Path(f.name)
 

@@ -4,7 +4,6 @@ from pathlib import Path
 import tempfile
 
 import numpy as np
-import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -15,9 +14,7 @@ from offline_detect import (
     _configure_runtime,
     _resolve_device,
     _use_half_for_device,
-    _preload_video_frames,
     _iou,
-    _run_tile_detection,
     _merge_tile_boxes,
     _draw_legend_offline,
     VIDEO_EXTS,
@@ -139,8 +136,6 @@ class TestOfflineDetect:
             {"x1": 80, "y1": 80, "x2": 90, "y2": 90, "conf": 0.7},
         ]
         result = _merge_tile_boxes(norm_boxes, tile_raw, 100, 100, iou_thresh=0.3)
-        # Проверяем, что результат содержит как минимум один бокс
-        # и что новый бокс присутствует
         assert len(result) >= 1
         found_new = any(b["x1"] == 80 and b["y1"] == 80 for b in result)
         assert found_new is True

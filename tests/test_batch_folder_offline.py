@@ -1,7 +1,7 @@
+# tests/test_batch_folder_offline.py
 import sys
 from pathlib import Path
 import json
-import tempfile
 from datetime import datetime, timedelta
 
 import pytest
@@ -20,16 +20,15 @@ from batch_folder_offline import (
     make_violation_logger,
     merge_combined_reports,
     load_json_if_exists,
-    ZONES_FILE,
     COOLDOWN_SECONDS,
 )
 
 
 class TestBatchFolderOffline:
+    """Тесты для batch_folder_offline.py"""
 
     def test_list_video_files(self, tmp_path):
         """Список видеофайлов в папке"""
-        # Создаём тестовые файлы
         for ext in [".mp4", ".avi", ".mkv", ".txt"]:
             (tmp_path / f"test{ext}").touch()
 
@@ -44,7 +43,6 @@ class TestBatchFolderOffline:
 
     def test_collect_video_folders(self, tmp_path):
         """Сбор папок с видео"""
-        # Создаём структуру
         folder1 = tmp_path / "cam1"
         folder2 = tmp_path / "cam2"
         folder3 = tmp_path / "empty"
@@ -56,7 +54,6 @@ class TestBatchFolderOffline:
         (folder1 / "video.mp4").touch()
         (folder2 / "video.avi").touch()
 
-        # Создаём аргументы
         class Args:
             folders = None
             root = str(tmp_path)
@@ -64,7 +61,6 @@ class TestBatchFolderOffline:
         args = Args()
         folders = collect_video_folders(args)
 
-        # Должны быть только папки с видео
         assert len(folders) == 2
         assert folder1 in folders
         assert folder2 in folders
@@ -72,14 +68,12 @@ class TestBatchFolderOffline:
 
     def test_load_zones_db(self, tmp_path):
         """Загрузка базы зон"""
-        # Создаём временный файл
         zones_file = tmp_path / "zones.json"
         zones_file.write_text(
             json.dumps({"cameras": {"test": {"zones": []}}}),
             encoding="utf-8"
         )
 
-        # Патчим ZONES_FILE
         import batch_folder_offline
         original = batch_folder_offline.ZONES_FILE
         batch_folder_offline.ZONES_FILE = zones_file
@@ -224,7 +218,6 @@ class TestBatchFolderOffline:
         sink = []
         logger = make_violation_logger("cam1", 1000.0, sink)
 
-        # Создаём mock violation
         class MockViolation:
             def __init__(self, violation, track_id, zone_label, note, conf, age_label, age_conf):
                 self.violation = violation
@@ -237,7 +230,7 @@ class TestBatchFolderOffline:
 
         violations = [
             MockViolation("red_light", 1, "crosswalk", "", 0.85, "adult", 0.90),
-            MockViolation("none", 2, "", "", 0.80, "adult", 0.85),  # пропускается
+            MockViolation("none", 2, "", "", 0.80, "adult", 0.85),
         ]
 
         logger(violations, 5.0)
