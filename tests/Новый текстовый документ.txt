@@ -1,0 +1,158 @@
+PS D:\PI\Video_analysis_pedestrian_safety-main_branch> ruff check .
+F401 [*] `tempfile` imported but unused
+ --> tests\test_camera_map_web.py:5:8
+  |
+3 | from pathlib import Path
+4 | import json
+5 | import tempfile
+  |        ^^^^^^^^
+6 |
+7 | import pytest
+  |
+help: Remove unused import: `tempfile`
+
+F401 [*] `pytest` imported but unused
+ --> tests\test_camera_map_web.py:7:8
+  |
+5 | import tempfile
+6 |
+7 | import pytest
+  |        ^^^^^^
+8 |
+9 | sys.path.insert(0, str(Path(__file__).parent.parent))
+  |
+help: Remove unused import: `pytest`
+
+F401 [*] `camera_map_web.all_camera_summaries` imported but unused
+  --> tests\test_camera_map_web.py:23:5
+   |
+21 |     first_video_for_camera,
+22 |     camera_summary,
+23 |     all_camera_summaries,
+   |     ^^^^^^^^^^^^^^^^^^^^
+24 |     extract_first_frame_bytes,
+25 |     _clean_roi,
+   |
+help: Remove unused import
+
+F401 [*] `camera_map_web.extract_first_frame_bytes` imported but unused
+  --> tests\test_camera_map_web.py:24:5
+   |
+22 |     camera_summary,
+23 |     all_camera_summaries,
+24 |     extract_first_frame_bytes,
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+25 |     _clean_roi,
+26 |     VIDEO_EXTS,
+   |
+help: Remove unused import
+
+F401 [*] `tempfile` imported but unused
+ --> tests\test_heatmap_web.py:5:8
+  |
+3 | from pathlib import Path
+4 | import json
+5 | import tempfile
+  |        ^^^^^^^^
+6 | from datetime import datetime
+7 | import shutil
+  |
+help: Remove unused import: `tempfile`
+
+F401 [*] `shutil` imported but unused
+ --> tests\test_heatmap_web.py:7:8
+  |
+5 | import tempfile
+6 | from datetime import datetime
+7 | import shutil
+  |        ^^^^^^
+8 |
+9 | import pytest
+  |
+help: Remove unused import: `shutil`
+
+F401 [*] `heatmap_web.resolve_video_folder` imported but unused
+  --> tests\test_heatmap_web.py:26:5
+   |
+24 |     build_violation_stats,
+25 |     camera_violation_payload,
+26 |     resolve_video_folder,
+   |     ^^^^^^^^^^^^^^^^^^^^
+27 |     list_videos,
+28 |     first_video_for_camera,
+   |
+help: Remove unused import
+
+F401 [*] `heatmap_web.list_videos` imported but unused
+  --> tests\test_heatmap_web.py:27:5
+   |
+25 |     camera_violation_payload,
+26 |     resolve_video_folder,
+27 |     list_videos,
+   |     ^^^^^^^^^^^
+28 |     first_video_for_camera,
+29 |     zones_for_camera,
+   |
+help: Remove unused import
+
+F401 [*] `heatmap_web.first_video_for_camera` imported but unused
+  --> tests\test_heatmap_web.py:28:5
+   |
+26 |     resolve_video_folder,
+27 |     list_videos,
+28 |     first_video_for_camera,
+   |     ^^^^^^^^^^^^^^^^^^^^^^
+29 |     zones_for_camera,
+30 |     background_url,
+   |
+help: Remove unused import
+
+F401 [*] `heatmap_web.build_heatmap_points` imported but unused
+  --> tests\test_heatmap_web.py:31:5
+   |
+29 |     zones_for_camera,
+30 |     background_url,
+31 |     build_heatmap_points,
+   |     ^^^^^^^^^^^^^^^^^^^^
+32 |     ALLOWED_IMAGE_EXTS,
+33 |     VIDEO_EXTS,
+   |
+help: Remove unused import
+
+F401 [*] `tempfile` imported but unused
+ --> tests\test_stream_detect_web.py:5:8
+  |
+3 | from pathlib import Path
+4 | import json
+5 | import tempfile
+  |        ^^^^^^^^
+6 | from unittest.mock import MagicMock, patch
+7 | import queue
+  |
+help: Remove unused import: `tempfile`
+
+F401 [*] `unittest.mock.patch` imported but unused
+ --> tests\test_stream_detect_web.py:6:38
+  |
+4 | import json
+5 | import tempfile
+6 | from unittest.mock import MagicMock, patch
+  |                                      ^^^^^
+7 | import queue
+  |
+help: Remove unused import: `unittest.mock.patch`
+
+F401 [*] `pytest` imported but unused
+  --> tests\test_stream_detect_web.py:9:8
+   |
+ 7 | import queue
+ 8 |
+ 9 | import pytest
+   |        ^^^^^^
+10 |
+11 | sys.path.insert(0, str(Path(__file__).parent.parent))
+   |
+help: Remove unused import: `pytest`
+
+Found 13 errors.
+[*] 13 fixable with the `--fix` option.
