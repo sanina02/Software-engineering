@@ -7,14 +7,14 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from traffic_light import (
-    STATE_RED,
-    STATE_GREEN,
-    STATE_UNKNOWN,
     LIGHT_TYPE_PEDESTRIAN,
     LIGHT_TYPE_VEHICLE,
-    pedestrian_allowed,
-    classify_roi,
+    STATE_GREEN,
+    STATE_RED,
+    STATE_UNKNOWN,
     TrafficLightAnalyzer,
+    classify_roi,
+    pedestrian_allowed,
 )
 
 

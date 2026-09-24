@@ -111,7 +111,7 @@ def generate_report(violations: list, output: str, camera_id: str | None = None)
         "generated_at": datetime.now().isoformat(),
         "camera_id": camera_id or "all",
         "total_violations": len(violations),
-        "unique_persons": len(unique_tracks),           
+        "unique_persons": len(unique_tracks),
         "confidence": {
             "average": round(avg_conf, 3),
             "min": round(min_conf, 3),
@@ -179,7 +179,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    
+
     if args.last:
         try:
             if args.last.endswith("h"):

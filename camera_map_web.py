@@ -5,7 +5,6 @@ from pathlib import Path
 import cv2
 from flask import Flask, Response, abort, jsonify, render_template, request
 
-
 BASE_DIR = Path(__file__).resolve().parent
 VIDEO_ROOT = BASE_DIR / "video"
 ZONES_FILE = BASE_DIR / "zones.json"

@@ -11,7 +11,6 @@ from dataclasses import dataclass, field
 import cv2
 import numpy as np
 
-
 # HSV-диапазоны цветов светофора
 _RED_RANGES = [
     ((0, 120, 80), (15, 255, 255)),

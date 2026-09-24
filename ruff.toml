@@ -1,0 +1,32 @@
+# ruff.toml
+line-length = 120
+target-version = "py311"
+
+[lint]
+# Только базовые проверки PEP8
+select = ["E", "F", "W", "I"]
+
+# Игнорируем избыточно строгие правила
+ignore = [
+    "E501",    # длинные строки
+    "E402",    # импорты не в начале файла
+    "BLE001",  # широкий except
+    "S110",    # try-except-pass
+    "S112",    # try-except-continue
+    "DTZ005",  # datetime.now() без tz
+    "DTZ006",  # datetime.fromtimestamp() без tz
+    "DTZ901",  # datetime.min без tz
+    "UP037",   # кавычки в аннотациях
+    "UP045",   # Optional[X]
+    "UP035",   # typing.Callable
+    "RUF046",  # лишний int()
+    "RUF059",  # неиспользуемые переменные
+    "RUF023",  # сортировка __slots__
+    "FURB192", # max вместо sorted
+    "PLR1722", # sys.exit вместо exit
+    "SIM102",  # вложенные if
+    "SIM117",  # вложенные with
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["F401", "F841"]

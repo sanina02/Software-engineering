@@ -17,24 +17,27 @@ stream_detect.py — Веб-визуализация детекции людей
 """
 
 import argparse
+import json
 import queue
 import subprocess
 import sys
 import threading
 import time
+from datetime import datetime
 from pathlib import Path
 
 import cv2
 import numpy as np
-from stream_detect_web import create_app
-import json
-from datetime import datetime
 
 from age_classifier import AgeClassifier, AgeTracker, BboxEMA
+from stream_detect_web import create_app
 from traffic_light import TrafficLightAnalyzer
 from violation_detector import (
-    ViolationDetector, draw_violations, draw_zones,
-    draw_traffic_light_states, _put_text_pil,
+    ViolationDetector,
+    _put_text_pil,
+    draw_traffic_light_states,
+    draw_violations,
+    draw_zones,
     person_inside_vehicle,
 )
 from zone_manager import ZoneManager

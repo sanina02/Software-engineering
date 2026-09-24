@@ -1,28 +1,28 @@
 # tests/test_stream_detect.py
 import sys
-from pathlib import Path
 import threading
 import time
+from pathlib import Path
 
 import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from stream_detect import (
-    compute_skip,
-    state,
-    set_camera,
-    _source_url,
-    _source_folder,
-    _current_video,
-    _restart_event,
-    _model_reload_event,
-    _clear_cache_event,
-    _frame_queue,
-    _evict_every,
-    _violation_cooldown,
     COOLDOWN_SECONDS,
     VIOLATION_LOG,
+    _clear_cache_event,
+    _current_video,
+    _evict_every,
+    _frame_queue,
+    _model_reload_event,
+    _restart_event,
+    _source_folder,
+    _source_url,
+    _violation_cooldown,
+    compute_skip,
+    set_camera,
+    state,
 )
 
 

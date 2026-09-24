@@ -1,10 +1,9 @@
 # tests/test_stream_detect_web.py
+import json
+import queue
 import sys
 from pathlib import Path
-import json
 from unittest.mock import MagicMock
-import queue
-
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 

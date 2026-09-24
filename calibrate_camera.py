@@ -36,7 +36,6 @@ from pathlib import Path
 import cv2
 import numpy as np
 
-
 CALIBRATIONS_DIR = Path("calibrations")
 SUPPORTED_EXTENSIONS = {".mp4", ".avi", ".mov", ".mkv", ".ts", ".webm", ".m4v"}
 

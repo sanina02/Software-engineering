@@ -1,25 +1,25 @@
 # tests/test_offline_detect.py
 import sys
-from pathlib import Path
 import tempfile
+from pathlib import Path
 
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from offline_detect import (
-    _progress_bar,
-    _format_eta,
-    _make_output_path,
+    OUTPUT_EXT,
+    OUTPUT_FOURCC,
+    VIDEO_EXTS,
     _configure_runtime,
+    _draw_legend_offline,
+    _format_eta,
+    _iou,
+    _make_output_path,
+    _merge_tile_boxes,
+    _progress_bar,
     _resolve_device,
     _use_half_for_device,
-    _iou,
-    _merge_tile_boxes,
-    _draw_legend_offline,
-    VIDEO_EXTS,
-    OUTPUT_FOURCC,
-    OUTPUT_EXT,
 )
 
 

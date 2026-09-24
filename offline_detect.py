@@ -65,10 +65,10 @@ from age_classifier import AgeClassifier, AgeTracker, BboxEMA
 from traffic_light import TrafficLightAnalyzer
 from violation_detector import (
     ViolationDetector,
+    _put_text_pil,
+    draw_traffic_light_states,
     draw_violations,
     draw_zones,
-    draw_traffic_light_states,
-    _put_text_pil,
     person_inside_vehicle,
 )
 from zone_manager import ZoneManager

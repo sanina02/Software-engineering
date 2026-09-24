@@ -1,25 +1,24 @@
 # tests/test_camera_map_web.py
+import json
 import sys
 from pathlib import Path
-import json
-
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from camera_map_web import (
-    load_json,
-    save_json,
-    load_map_config,
-    save_map_config,
-    load_zones_db,
-    save_zones_db,
-    discover_camera_ids,
-    resolve_video_folder,
-    list_videos,
-    first_video_for_camera,
-    camera_summary,
-    _clean_roi,
     VIDEO_EXTS,
+    _clean_roi,
+    camera_summary,
+    discover_camera_ids,
+    first_video_for_camera,
+    list_videos,
+    load_json,
+    load_map_config,
+    load_zones_db,
+    resolve_video_folder,
+    save_json,
+    save_map_config,
+    save_zones_db,
 )
 
 

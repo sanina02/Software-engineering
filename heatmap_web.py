@@ -6,7 +6,6 @@ import cv2
 from flask import Flask, jsonify, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
 
-
 BASE_DIR = Path(__file__).resolve().parent
 REPORT_DIRS = [BASE_DIR / "reports", BASE_DIR / "reports_batches"]
 POSITIONS_FILE = BASE_DIR / "heatmap_camera_positions.json"

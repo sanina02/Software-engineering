@@ -27,9 +27,8 @@ try:
 except ImportError:
     _PIL_AVAILABLE = False
 
+from traffic_light import STATE_UNKNOWN, TrafficLightAnalyzer
 from zone_manager import RoadZone, ZoneManager
-from traffic_light import TrafficLightAnalyzer, STATE_UNKNOWN
-
 
 # ── Утилита: фильтрация водителей/пассажиров в транспорте ────────────────────
 
@@ -403,7 +402,7 @@ def draw_traffic_light_states(
                 roi_state = per_roi[roi_idx]["state"]
                 # Для vehicle отдельно пересчитываем отображаемый ключ
                 if light_type == "vehicle":
-                    from traffic_light import pedestrian_allowed, LIGHT_TYPE_VEHICLE
+                    from traffic_light import LIGHT_TYPE_VEHICLE, pedestrian_allowed
                     roi_allowed = pedestrian_allowed(roi_state, LIGHT_TYPE_VEHICLE)
                     roi_key = "vehicle_allowed" if roi_allowed else roi_state
                 else:

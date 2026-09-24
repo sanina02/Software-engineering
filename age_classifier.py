@@ -48,8 +48,6 @@ import json
 from collections import Counter, deque
 from pathlib import Path
 
-
-
 CALIBRATIONS_DIR = Path("calibrations")
 
 # Цвета BGR для отрисовки

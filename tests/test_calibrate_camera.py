@@ -5,9 +5,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from calibrate_camera import (
-    AutoCalibrator,
     CALIBRATIONS_DIR,
     SUPPORTED_EXTENSIONS,
+    AutoCalibrator,
     _progress_bar,
 )
 
